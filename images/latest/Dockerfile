@@ -100,9 +100,14 @@ RUN /bin/bash -c ". ~/.nvm/nvm.sh && nvm use ${VERSION_NODE_16} && \
 ## Environment Setup
 RUN echo export PATH="\
 /root/.nvm/versions/node/${VERSION_NODE_DEFAULT}/bin:\
-$(python3 -m site --user-base)/bin:\
 $(python3.8 -m site --user-base)/bin:\
 $PATH" >> ~/.bashrc && \
      echo "nvm use ${VERSION_NODE_DEFAULT} 1> /dev/null" >> ~/.bashrc
+
+RUN ln -fs /usr/local/bin/python3.8 /usr/bin/python
+RUN ln -fs /usr/local/bin/python3.8 /usr/bin/python3
+RUN ln -fs /usr/local/bin/pip3.8 /usr/bin/pip
+RUN ln -fs /usr/local/bin/pip3.8 /usr/bin/pip3
+RUN ln -fs /usr/local/bin/pip3.8 /usr/bin/pip3-3
 
 ENTRYPOINT [ "bash", "-c" ]
