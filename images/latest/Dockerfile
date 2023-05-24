@@ -89,6 +89,9 @@ RUN /bin/bash -c ". ~/.nvm/nvm.sh && \
     npm install -g --unsafe-perm=true gatsby-cli@${VERSION_GATSBY_CLI} && \
     nvm alias default ${VERSION_NODE_DEFAULT} && nvm cache clear"
 
+## Install pipenv
+RUN /bin/bash -c "pip3.8 install --user pipenv"
+
 ## Install awscli
 RUN /bin/bash -c "pip3.8 install awscli && rm -rf /var/cache/apk/*"
 
